@@ -1,0 +1,7 @@
+<div class="container">
+  <span routerLink="" class="header">Białystok</span>
+
+  <button *ngIf="userService.isLoggedIn()" class="new-event" mat-stroked-button color="warn" (click)="openNewEventDialog()">Nowe wydarzenie</button>
+
+  <p class="logout" *ngIf="userService.isLoggedIn()" (click)="logout()">Wyloguj</p>
+</div>

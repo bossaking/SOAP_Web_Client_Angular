@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="form-container">
+    <span>Zaloguj się</span>
+
+    <form [formGroup]="loginForm" (submit)="login()">
+
+      <mat-form-field appearance="outline">
+        <mat-label>Nazwa użytkownika</mat-label>
+        <input formControlName="username" matInput placeholder="Placeholder" required>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Hasło</mat-label>
+        <input formControlName="password" matInput [type]="hide ? 'password' : 'text'" required>
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      </mat-form-field>
+
+      <button mat-flat-button color="primary" type="submit">Zaloguj</button>
+    </form>
+  </div>
+</div>

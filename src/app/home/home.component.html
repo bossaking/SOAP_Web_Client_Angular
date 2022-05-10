@@ -1,0 +1,42 @@
+<div class="container">
+
+  <div class="side-nav">
+
+    <form class="nav-form" [formGroup]="filtersForm" (submit)="getEvents()">
+
+      <mat-form-field appearance="outline">
+        <input type="date" formControlName="date" matInput placeholder="Placeholder">
+      </mat-form-field>
+
+      <mat-slide-toggle
+        formControlName="week"
+        color="primary">
+        Rozkład na tydzień
+      </mat-slide-toggle>
+
+      <button mat-flat-button color="primary" type="submit">Zastosuj</button>
+
+      <button mat-flat-button color="warn" class="pdf-button" type="button" [disabled]="pdfDisabled" (click)="downloadPDF()">Pobierz PDF</button>
+    </form>
+
+
+
+  </div>
+
+  <div class="events-container">
+    <div *ngFor="let event of events" class="event" (click)="editEvent(event)">
+      <span class="title">{{event.name}}</span>
+      <div class="subtitle">
+        <p class="type">{{event.type}} | </p>
+        <p class="date">{{event.date}}.{{event.month <= 9 ? "0" + (event.month + 1) : event.month}}.{{event.year}}</p>
+      </div>
+      <hr>
+      <span class="description">
+        {{event.description}}
+      </span>
+    </div>
+  </div>
+
+</div>
+
+
